@@ -1,0 +1,32 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '3.2.1'
+	id "org.joinfaces" version "5.1.7"
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.jsftest'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation platform('org.joinfaces:joinfaces-platform:5.2.1')
+	implementation('org.joinfaces:myfaces4-spring-boot-starter')
+	implementation('org.joinfaces:weld-spring-boot-starter')
+
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
